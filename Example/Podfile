@@ -1,0 +1,7 @@
+pod "UIView+DragDrop", :path => "../UIView+DragDrop.podspec"
+
+target "Demo" do
+end
+
+target "DemoTests" do
+end
