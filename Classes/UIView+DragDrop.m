@@ -35,9 +35,10 @@ static char _delegate, _dropViews, _startPos, _isHovering, _mode;
     
     //Save pertinent info
     objc_setAssociatedObject(self, &_delegate, delegate, ASSIGN);
-    objc_setAssociatedObject(self, &_dropViews, views, STRONG_N);
     objc_setAssociatedObject(self, &_isHovering, @NO, STRONG_N);
     objc_setAssociatedObject(self, &_mode, @(UIViewDragDropModeNormal), STRONG_N);
+    
+    [self setDropViews:views];
     
     //add the pan gesture
     [self addPanGesture];
