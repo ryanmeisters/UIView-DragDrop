@@ -34,6 +34,8 @@ typedef NS_ENUM( NSInteger, UIViewDragDropMode) {
 
 - (void) setDragMode:(UIViewDragDropMode)mode;
 
+- (void) setDropViews:(NSArray*)views;
+
 @end
 
 /**

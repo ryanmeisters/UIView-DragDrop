@@ -55,6 +55,11 @@ static char _delegate, _dropViews, _startPos, _isHovering, _mode;
     objc_setAssociatedObject(self, &_mode, @(mode), STRONG_N);
 }
 
+- (void) setDropViews:(NSArray*)views
+{
+    objc_setAssociatedObject(self, &_dropViews, views, STRONG_N);
+}
+
 #pragma mark - Private API
 
 - (void) addPanGesture
