@@ -1,0 +1,14 @@
+PODS:
+  - UIView+DragDrop (0.1.0)
+
+DEPENDENCIES:
+  - UIView+DragDrop (from `../UIView+DragDrop.podspec`)
+
+EXTERNAL SOURCES:
+  UIView+DragDrop:
+    :path: ../UIView+DragDrop.podspec
+
+SPEC CHECKSUMS:
+  UIView+DragDrop: f79fc15d18cce6041677cc520afac460cece6396
+
+COCOAPODS: 0.29.0

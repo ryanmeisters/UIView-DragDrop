@@ -1,7 +1,3 @@
+platform :ios, '5.1'
+
 pod "UIView+DragDrop", :path => "../UIView+DragDrop.podspec"
-
-target "Demo" do
-end
-
-target "DemoTests" do
-end
