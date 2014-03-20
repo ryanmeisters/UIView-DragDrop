@@ -29,7 +29,11 @@ static char _delegate, _dropViews, _startPos, _isHovering, _mode;
  */
 @implementation UIView (DragDrop)
 
-- (void) makeDraggable {}
+- (void) makeDraggable
+{
+    [self makeDraggableWithDropViews:nil delegate:nil];
+
+}
 
 - (void) makeDraggableWithDropViews:(NSArray *)views delegate:(id<UIViewDragDropDelegate>)delegate {
     
