@@ -120,13 +120,17 @@ static char _delegate, _dropViews, _startPos, _isHovering, _mode;
             if (CGRectIntersectsRect(self.frame, v.frame)) {
                 //notify delegate if we're on a drop view
                 if (isHovering == NO) {
-                    [delegate view:self didHoverOverDropView:v];
+                    if ([delegate respondsToSelector:@selector(view:didHoverOverDropView:)]) {
+                        [delegate view:self didHoverOverDropView:v];
+                    }
                     isHovering = YES;
                 }
             } else {
                 if (isHovering == YES) {
                     isHovering = NO;
-                    [delegate view:self didUnhoverOverDropView:v];
+                    if ([delegate respondsToSelector:@selector(view:didUnhoverOverDropView:)]) {
+                        [delegate view:self didUnhoverOverDropView:v];
+                    }
                 }
             }
         }

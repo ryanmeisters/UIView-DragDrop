@@ -43,10 +43,9 @@ typedef NS_ENUM( NSInteger, UIViewDragDropMode) {
  */
 @protocol UIViewDragDropDelegate <NSObject>
 
+- (void) view:(UIView *)view wasDroppedOnDropView:(UIView *)drop;
 
 @optional
-
-- (void) view:(UIView *)view wasDroppedOnDropView:(UIView *)drop;
 
 - (BOOL) viewShouldReturnToStartingPosition:(UIView*)view;
 
