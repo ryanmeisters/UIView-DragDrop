@@ -75,6 +75,43 @@ static char _delegate, _dropViews, _startPos, _isHovering, _mode;
     [self addGestureRecognizer:rec];
 }
 
+- (UIView*) commonSuperViewWithView:(UIView*)view
+{
+    UIView* commonSuperview = nil;
+    UIView* candidateView = self.superview;
+    
+    while (commonSuperview == nil)
+    {
+        if ([view isDescendantOfView:candidateView])
+        {
+            commonSuperview = candidateView;
+        }
+        else
+        {
+            candidateView = candidateView.superview;
+        }
+        
+        if (!candidateView) break;
+    }
+    
+    return commonSuperview;
+}
+
+-(BOOL) intersectsView:(UIView*)secondView
+{
+    UIView* commonSuperview = [self commonSuperViewWithView:secondView];
+    if (!commonSuperview)
+    {
+        NSLog(@"Views not in same view hierarchy");
+        return NO;
+    }
+    
+    CGRect selfRect = [commonSuperview convertRect:self.bounds fromView:self];
+    CGRect secondRect = [commonSuperview convertRect:secondView.bounds fromView:secondView];
+    
+    return CGRectIntersectsRect(selfRect, secondRect);
+}
+
 // Handle UIPanGestureRecognizer events
 - (void) dragging:(UIPanGestureRecognizer *)recognizer
 {
@@ -117,7 +154,7 @@ static char _delegate, _dropViews, _startPos, _isHovering, _mode;
         
         // check if we're on a drop view
         for (UIView *v in dropViews) {
-            if (CGRectIntersectsRect(self.frame, v.frame)) {
+            if ([self intersectsView:v]) {
                 //notify delegate if we're on a drop view
                 if (isHovering == NO) {
                     if ([delegate respondsToSelector:@selector(view:didHoverOverDropView:)]) {
@@ -149,8 +186,7 @@ static char _delegate, _dropViews, _startPos, _isHovering, _mode;
         }
         
         for (UIView *v in dropViews) {
-            if (CGRectIntersectsRect(self.frame, v.frame)) {
-                //notify delegate
+            if ([self intersectsView:v]) {
                 [delegate view:self wasDroppedOnDropView:v];
             } else {
                 if ([delegate respondsToSelector:@selector(draggingDidEndWithoutDropForView:)]){
