@@ -168,7 +168,12 @@ static char _delegate, _dropViews, _startPos, _isHovering, _mode;
             CGPoint c = CGPointMake(x, y);
             
             [UIView animateWithDuration:RESET_ANIMATION_DURATION
-                             animations:^{ self.center = c; }];
+                 animations:^{ self.center = c; } completion:^(BOOL finished) {
+                     if ([delegate respondsToSelector:@selector(viewDidReturnToStartingPosition:)])
+                     {
+                         [delegate viewDidReturnToStartingPosition:self];
+                     }
+                 }];
         }
     }
 }

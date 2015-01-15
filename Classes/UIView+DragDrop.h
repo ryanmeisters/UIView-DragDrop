@@ -48,6 +48,8 @@ typedef NS_ENUM( NSInteger, UIViewDragDropMode) {
 @optional
 
 - (BOOL) viewShouldReturnToStartingPosition:(UIView*)view;
+- (void) viewDidReturnToStartingPosition:(UIView *)view;
+
 
 - (void) draggingDidBeginForView:(UIView*)view;
 - (void) draggingDidEndWithoutDropForView:(UIView*)view;
