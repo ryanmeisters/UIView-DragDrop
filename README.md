@@ -79,11 +79,6 @@ typedef NS_ENUM( NSInteger, UIViewDragDropMode) {
 
 To run the example project; clone the repo, and run `pod install` from the Example directory first.
 
-## Author
-
-Ryan Meisters, ryanmeisters@gmail.com
-- Ryan Meisters [@ryanmeisters](https://github.com/ryanmeisters)
-
 ## License
 
 UIView+DragDrop is available under the MIT license. See the LICENSE file for more info.
